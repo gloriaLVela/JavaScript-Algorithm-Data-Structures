@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colorful numbers</title>
+</head>
+<body>
+<script>
+    function colorfulNumbers(numbers)
+    {
+
+       let numberArray = numbers.toString().split("");
+       let colorfulNumbers = [];
+        let arrayLength = numberArray.length;
+       let thisNumber;
+        // for (let i = 0; i < arrayLength; i++){
+        //     thisNumber = parseInt(numberArray[i]);
+        //
+        //     if (colorfulNumbers.indexOf(thisNumber) >= 0) {
+        //         return false;
+        //     }
+        //     console.log('thisNumber ' + thisNumber);
+        //     colorfulNumbers.push(thisNumber)
+        // }
+       let j  =  1;
+       //console.log(' numberArray ' + numberArray);
+
+       while ((arrayLength % j) == 0)
+       {
+           console.log(' j ' + j);
+           for (let i = 0; i < arrayLength - j + 1; i++){
+               thisNumber = 1;
+               for (let k = 0; k < j ; k++){
+                   console.log(' k ' + k);
+                   thisNumber = thisNumber * parseInt(numberArray[k + i]);
+               }
+
+               if (colorfulNumbers.indexOf(thisNumber) >= 0) {
+                   return false;
+               }
+               console.log('thisNumber ' + thisNumber);
+               colorfulNumbers.push(thisNumber)
+           }
+           j++;
+       }
+       if ((arrayLength % j) != 0){
+           for (let i = 0; i < arrayLength - j + 1; i++){
+               thisNumber = 1;
+               for (let k = 0; k < j ; k++){
+                   console.log(' k ' + k);
+                   thisNumber = thisNumber * parseInt(numberArray[k + i]);
+               }
+
+               if (colorfulNumbers.indexOf(thisNumber) >= 0) {
+                   return false;
+               }
+               console.log('thisNumber ' + thisNumber);
+               colorfulNumbers.push(thisNumber)
+           }
+       }
+       console.log(colorfulNumbers);
+       return true;
+    }
+console.log('3245 ' + colorfulNumbers(3245));
+    console.log('326 ' + colorfulNumbers(326));
+</script>
+</body>
+</html>
