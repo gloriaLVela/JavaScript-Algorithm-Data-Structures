@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Merge Sort Implementation</title>
+</head>
+<body>
+<script>
+    function merge(arrayA1, arrayB1) {
+        let k = 0;
+        let j = 0;
+        let arrayResult = [];
+        // console.log("arrayA1 " + arrayA1);
+        // console.log("arrayB1 " +arrayB1);
+        while (k < arrayA1.length && j < arrayB1.length) {
+            if (arrayA1[k] < arrayB1[j]) {
+                arrayResult.push(arrayA1[k]);
+                k++;
+            } else {
+                arrayResult.push(arrayB1[j]);
+                j++;
+            }
+        }
+        while (k < arrayA1.length) {
+            arrayResult.push(arrayA1[k]);
+            k++;
+        }
+        // console.log(arrayB);
+        while (j < arrayB1.length) {
+            arrayResult.push(arrayB1[j]);
+            j++;
+        }
+        return arrayResult;
+    }
+    function mergeSort(arrayList){
+        let midPoint = 0;
+        if(arrayList.length >= 2){
+            midPoint = Math.trunc(arrayList.length/2);
+            let arrayA = arrayList.slice(0,midPoint );
+            let arrayB = arrayList.slice(midPoint, arrayList.length);
+            // console.log("arrayA " + arrayA);
+            // console.log("arrayB " +arrayB);
+            arrayA = mergeSort(arrayA);
+            arrayB = mergeSort(arrayB);
+            return merge(arrayA, arrayB);
+        }
+        else {
+            return arrayList;
+        }
+    }
+
+    let currentArray = [5,2,8,9,11,25,3,1];
+    currentArray = mergeSort(currentArray);
+    console.log(currentArray);
+
+    currentArray = [15,12,18,19,111,125,13];
+    currentArray = mergeSort(currentArray);
+    console.log(currentArray);
+</script>
+</body>
+</html>
