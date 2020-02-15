@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quick Sort</title>
+</head>
+<body>
+<script>
+    function processData(input) {
+        //Enter your
+        if (input.length <= 1) {
+            return;
+        }
+        let pivot = input[0];
+        input.shift();
+        let midPoint = Math.trunc(input.length / 2);
+        input.splice(midPoint, 0, pivot);
+        let start = 0;
+        let end = input.length - 1;
+        while (start < end) {
+            console.log(' start ' + start);
+            console.log(' end ' + end);
+            console.log(input);
+            if (input[start] > pivot && pivot < input[end]) {
+                let temp = input[start];
+                input[start] = input[end];
+                input[end] = temp;
+                start++;
+                end--;
+            }
+            if (input[start] < midPoint) {
+                start++;
+            }
+
+            if (input[end] > midPoint) {
+                end--;
+            }
+        }
+
+        processData(input.slice(0, midPoint));
+        processData(input.slice(midPoint + 1, input.length));
+        return input;
+    }
+
+
+    console.log(processData([5, 8, 1, 3, 7, 9, 2]));
+</script>
+</body>
+</html>
